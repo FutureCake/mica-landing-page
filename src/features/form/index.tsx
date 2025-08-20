@@ -28,7 +28,7 @@ export default function Signup(props: SignupProps) {
 
     return (
         <div id="signup-container">
-            <h1>Early access signup</h1>
+            <h1>Early access</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} {...rest}>
 
@@ -36,6 +36,7 @@ export default function Signup(props: SignupProps) {
                     type="email"
                     placeholder="Your@email.com"
                     autoComplete="email"
+                    message="Don't worry, we won't spam you"
                     error={errors.email?.message}
                     {...register("email", {
                         required: "Email is required",
@@ -46,7 +47,7 @@ export default function Signup(props: SignupProps) {
                     })}
                 />
 
-                <CheckBox onClick={onExtend} label={"I am a business owner"} {...register("businessOwner")} />
+                <CheckBox id="checkbox" onClick={onExtend} label={"I am a business owner"} {...register("businessOwner")} />
 
                 {isBusinessOwner && <BusinessDetailsSection register={register} errors={errors} />}
 
