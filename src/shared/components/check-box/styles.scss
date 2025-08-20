@@ -1,0 +1,33 @@
+.check-box-container {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    font-family: SF-Pro;
+    align-items: center;
+}
+
+.check-box-element-wrapper {
+    height: 28px;
+    aspect-ratio: 1;
+    border: 2px solid #000;
+    padding: 2px;
+    border-radius: 100%;
+}
+
+.check-box-element-selected {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: #000;
+    border-radius: 100%;
+}
+
+.check-box-element {
+    display: none;
+}
+
+.check-box-label {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #000;
+}

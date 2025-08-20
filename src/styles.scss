@@ -1,0 +1,19 @@
+@import "./shared/scss/media-queries.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100vh;
+
+    @include respond("mobile") {
+        grid-template-columns: 100vw;
+        grid-template-rows: 100vh auto auto 300px;
+    }
+}
