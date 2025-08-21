@@ -2,21 +2,21 @@ import Footer from './features/footer';
 import Signup from './features/form';
 import Introduction from './features/introduction';
 import Logo from './features/logo';
-import { ColorThemeProvider } from './shared/contexts/color/provider';
+import useColorTheme from './shared/contexts/color/hook';
 import './styles.scss';
 
 export default function App() {
 
+    const { background } = useColorTheme();
+
     return (
-        <ColorThemeProvider>
-            <div id="app">
-                <Logo />
-                <div id='content'>
-                    <Introduction />
-                    <Signup />
-                    <Footer />
-                </div>
+        <div id="app" style={{ background }}>
+            <Logo />
+            <div id='content'>
+                <Introduction />
+                <Signup />
+                <Footer />
             </div>
-        </ColorThemeProvider>
+        </div>
     )
 }

@@ -28,7 +28,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props: Te
         <div className={["text-input-container", className].join(" ")} id={id}>
             <label className="text-input-wrapper">
                 {label && (<span className="text-input-label">{label}</span>)}
-                <input {...rest} onBlur={handleBlur} className="text-input-element" ref={ref} style={{ borderColor: error ? primary : text }} />
+                <input {...rest} onBlur={handleBlur} className="text-input-element" ref={ref} style={{ color: text, borderColor: error ? primary : text }} />
             </label>
             {(inputMsg !== undefined) && <span style={{ background: primary }} className="text-input-message">{inputMsg}</span>}
         </div>

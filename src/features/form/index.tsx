@@ -1,9 +1,10 @@
 import { useForm, useWatch } from "react-hook-form";
-import { API } from "../../shared/api/api";
 import Button from "../../shared/components/button";
 import { CheckBox } from "../../shared/components/check-box";
 import { TextInput } from "../../shared/components/text-input";
+import useColorTheme from "../../shared/contexts/color/hook";
 import { BusinessDetailsSection } from "./components/business-details";
+import useSignup from "./hooks/signup";
 import "./styles.scss";
 
 export type SignUpData = {
@@ -16,18 +17,16 @@ export type SignUpData = {
 
 export default function Signup() {
 
+    const { text, primary } = useColorTheme();
+    const { onSubmit, response } = useSignup();
     const { register, handleSubmit, control, formState: { errors, isValid } } = useForm<SignUpData>({
         mode: "onChange",
     });
     const isBusinessOwner = useWatch({ name: "businessOwner", control });
 
-    const onSubmit = (data: SignUpData): void => {
-        API.post("/early-access", data);
-    };
-
     return (
         <div id="signup-container">
-            <h1>Early access</h1>
+            <h1 style={{ color: text }}>Early access</h1>
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -51,6 +50,7 @@ export default function Signup() {
                 {isBusinessOwner && <BusinessDetailsSection register={register} errors={errors} />}
 
                 <Button id="submit" type="submit" disabled={!isValid}>Join now</Button>
+                {response && <p style={{ color: primary }}>{response}</p>}
             </form>
 
         </div>
