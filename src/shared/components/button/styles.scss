@@ -1,20 +1,11 @@
-:root {
-    --bg-color: #00008B;
-    --color: #fff;
-    --disabled-color: #dedede;
-    --disabled-bg-color: #90909f;
-}
-
 .button {
-    background: var(--bg-color);
-    color: var(--color);
-    padding: 10px 13px;
-    font-size: 26px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 22px;
     border-radius: 16px;
     border: none;
 }
 
 .button-disabled {
-    background: var(--disabled-bg-color);
-    color: var(--disabled-color)
+    opacity: 0.2;
 }

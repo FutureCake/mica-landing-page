@@ -7,7 +7,7 @@ import "./styles.scss";
 export default function Logo() {
 
     const { primary } = useColorTheme();
-    const isMobile = useMediaQuery({ maxWidth: 768 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     const containerRef = useRef<HTMLDivElement>(null);
 
     const handleScroll = () => {

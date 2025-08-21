@@ -20,7 +20,7 @@ export const CheckBox = forwardRef<HTMLInputElement, TextInputProps>((props: Tex
         <label id={id} className={["check-box-container", className].join(" ")}>
             <div className="check-box-element-wrapper">
                 <input {...rest} type="checkbox" className="check-box-element" ref={ref} onChange={onChangeHandler} />
-                {selected && (<div className="check-box-element-selected" />)}
+                {selected && <div className="check-box-element-selected" />}
             </div>
 
             <span className="check-box-label">{label}</span>

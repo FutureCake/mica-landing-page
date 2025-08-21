@@ -11,9 +11,11 @@ export default function App() {
         <ColorThemeProvider>
             <div id="app">
                 <Logo />
-                <Introduction />
-                <Signup />
-                <Footer />
+                <div id='content'>
+                    <Introduction />
+                    <Signup />
+                    <Footer />
+                </div>
             </div>
         </ColorThemeProvider>
     )
