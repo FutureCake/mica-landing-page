@@ -6,7 +6,7 @@ import "./styles.scss";
 
 export default function Logo() {
 
-    const { background } = useColorTheme();
+    const { primary } = useColorTheme();
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -18,7 +18,7 @@ export default function Logo() {
     }
 
     return (
-        <div id="brand-container" ref={containerRef} style={{ background }}>
+        <div id="brand-container" ref={containerRef} style={{ background: primary }}>
 
             <div id="center-wrapper">
                 <img id="logo" src={logo} />
