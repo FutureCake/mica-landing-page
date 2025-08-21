@@ -1,5 +1,5 @@
 import { useEffect, useState, type PropsWithChildren } from "react";
-import { darkScheme, lightScheme } from "./constants";
+import { darkScheme, lightScheme, primaryDarkColors, primaryLightColors } from "./constants";
 import { ColorThemeContext } from "./context";
 import { getSystemTheme } from "./helpers";
 import type { Theme } from "./types";
@@ -21,6 +21,7 @@ export function ColorThemeProvider(props: PropsWithChildren) {
     }, []);
 
     const colors = theme === "dark" ? darkScheme : lightScheme;
+    colors.primary = theme === "dark" ? primaryDarkColors[Math.round(Math.random() * primaryDarkColors.length - 1)] : primaryLightColors[Math.round(Math.random() * primaryLightColors.length - 1)];
 
     return (
         <ColorThemeContext.Provider value={colors}>
