@@ -1,14 +1,10 @@
 import { useForm, useWatch } from "react-hook-form";
+import { API } from "../../shared/api/api";
 import Button from "../../shared/components/button";
 import { CheckBox } from "../../shared/components/check-box";
 import { TextInput } from "../../shared/components/text-input";
 import { BusinessDetailsSection } from "./components/business-details";
 import "./styles.scss";
-
-export type SignupProps = {
-    onSubmit: (data: any) => void;
-    onExtend: () => void;
-}
 
 export type SignUpData = {
     email: string;
@@ -18,19 +14,22 @@ export type SignUpData = {
     businessAddress?: string;
 }
 
-export default function Signup(props: SignupProps) {
+export default function Signup() {
 
-    const { onSubmit, onExtend, ...rest } = props;
     const { register, handleSubmit, control, formState: { errors, isValid } } = useForm<SignUpData>({
         mode: "onChange",
     });
     const isBusinessOwner = useWatch({ name: "businessOwner", control });
 
+    const onSubmit = (data: SignUpData): void => {
+        API.post("/early-access", data);
+    };
+
     return (
         <div id="signup-container">
             <h1>Early access</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)} {...rest}>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
                 <TextInput
                     type="email"
@@ -47,7 +46,7 @@ export default function Signup(props: SignupProps) {
                     })}
                 />
 
-                <CheckBox id="checkbox" onClick={onExtend} label={"I am a business owner"} {...register("businessOwner")} />
+                <CheckBox id="checkbox" label={"I am a business owner"} {...register("businessOwner")} />
 
                 {isBusinessOwner && <BusinessDetailsSection register={register} errors={errors} />}
 
